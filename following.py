@@ -61,6 +61,17 @@ class GithubFollower:
                 logger.warning(f"User {username} does not exist or is not accessible.")
                 return
 
+        # Check if already following
+        following_url = f'{BASE_URL}/user/following/{username}'
+        async with self.session.get(following_url) as response:
+            if response.status == 204:
+                logger.info(f"Already following {username}")
+                return
+            elif response.status != 404:
+                logger.error(f"Unexpected status when checking if following {username}: {response.status}")
+                return
+
+        # If not already following, attempt to follow
         async with self.session.put(FOLLOW_URL + username) as response:
             if response.status == 204:
                 logger.info(f'Successfully followed {username}')
