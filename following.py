@@ -103,7 +103,7 @@ async def main():
     follower = GithubFollower(GITHUB_TOKEN)
     await follower.create_session()
     try:
-        project_folder_path = './'
+        project_folder_path = './usernames/'
         await follower.follow_users_from_all_text_files(project_folder_path)
     finally:
         await follower.close_session()
