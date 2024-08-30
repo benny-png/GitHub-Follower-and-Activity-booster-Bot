@@ -1,4 +1,4 @@
-# GitHub Follower Bot
+# GitHub Follower and activity booster Bot
 
 This Python script automates the process of following GitHub users based on a list of usernames stored in text files. It uses the GitHub API and `aiohttp` for asynchronous HTTP requests, allowing for efficient management of API rate limits and network resources.
 
